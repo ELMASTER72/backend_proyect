@@ -7,12 +7,15 @@ const handleLogin = async (req, res) => {
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
 
     const foundUser = await User.findOne({ username: user }).exec();
-    if (!foundUser) return res.sendStatus(401); //Unauthorized 
-    // evaluate password 
+    //No autorizado 
+    if (!foundUser) return res.sendStatus(401);
+
+    // Evaluar la contraseña
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (match) {
         const roles = Object.values(foundUser.roles).filter(Boolean);
-        // create JWTs
+
+        // Crea los Json Web Tokens
         const accessToken = jwt.sign(
             {
                 "UserInfo": {
@@ -28,16 +31,17 @@ const handleLogin = async (req, res) => {
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
         );
-        // Saving refreshToken with current user
+
+        // Guarda refreshToken con current del usuario
         foundUser.refreshToken = refreshToken;
         const result = await foundUser.save();
         console.log(result);
         console.log(roles);
 
-        // Creates Secure Cookie with refresh token
+        // Crea una cookie segura con un token de actualización
         res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
 
-        // Send authorization roles and access token to user
+        // Enviar roles de autorización y token de acceso al usuario
         res.json({ roles, accessToken });
 
     } else {

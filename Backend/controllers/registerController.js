@@ -5,15 +5,15 @@ const handleNewUser = async (req, res) => {
     const { user, pwd } = req.body;
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
 
-    // check for duplicate usernames in the db
+    // comprueba si hay nombres de usuario duplicados en la base de datos
     const duplicate = await User.findOne({ username: user }).exec();
     if (duplicate) return res.sendStatus(409); //Conflict 
 
     try {
-        //encrypt the password
+        // cifrar la contraseña
         const hashedPwd = await bcrypt.hash(pwd, 10);
 
-        //create and store the new user
+        // Crear y almacenar el nuevo usuario
         const result = await User.create({
             "username": user,
             "password": hashedPwd

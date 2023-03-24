@@ -13,32 +13,32 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 
-// Connect to MongoDB
+// Conecta a MongoDB
 connectDB();
 
-// custom middleware logger
+// personaliza middleware logger
 app.use(logger);
 
-// Handle options credentials check - before CORS!
-// and fetch cookies credentials requirement
+// Manejar la verificación de credenciales de opciones - ¡antes de CORS!
+// y obtener el requisito de credenciales de cookies
 app.use(credentials);
 
-// Cross Origin Resource Sharing
+// Intercambio de recursos de origen cruzado
 app.use(cors(corsOptions));
 
-// built-in middleware to handle urlencoded form data
+// middleware incorporado para manejar datos de formulario codificados en urlen
 app.use(express.urlencoded({ extended: false }));
 
-// built-in middleware for json 
+// middleware integrado para json
 app.use(express.json());
 
-//middleware for cookies
+//middleware para cookies
 app.use(cookieParser());
 
-//serve static files
+// servidor de archivos estáticos
 app.use('/', express.static(path.join(__dirname, '/public')));
 
-// routes
+// rutas
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));

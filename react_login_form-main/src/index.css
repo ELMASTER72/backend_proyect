@@ -12,9 +12,9 @@ html {
     color: #fff;
 }
 
-body {
+.Home_color{
     min-height: 100vh;
-    background-color: dodgerblue;
+    background: url('../src/component/images/fondo_principal.jpg');
 }
 
 .App {
@@ -112,4 +112,3 @@ button {
 .line {
     display: inline-block;
 }
-

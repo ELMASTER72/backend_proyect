@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black;
+  height: 57.8rem;
+  background-image: url(../src/assets/imgFondo.jpg);
+  background-size: cover;
+}
+
+.navar {
+  display: flex;
+}
+
+.links {
+  border: solid 1px black;
+  display: flex;
+  width: 112rem;
+  height: 2rem; 
+  justify-content: space-around;
+  text-align: center;
+  background-color: #ECF936;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.links > a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.div-gym {
+  display: flex;
+  height: 40rem;
+}
+
+.gymq {
+  color: white;
+  width: 50rem;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  font-size: 5rem;
+  margin-top: 6rem;
+  align-items: center;
+}
+
+.gym {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 50rem;
+  margin-left: 10rem;
+}
+
+.gym > hr {
+  width: 20rem;
+  margin-bottom: -5rem;
+}
+
+.gym > .h1  {
+  font-size: 8rem;
+}
+
+.btnMore {
+  width: 15rem;
+  height: 2rem;
+  border: none;
+  background-color: #ECF936;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logo {
+  width: 6rem;
+  height: 6rem;
+  margin-right: -20rem;
+  margin-top: -2rem;
+  border: solid 5px #ECF936;
+  border-radius: 3rem;
+}

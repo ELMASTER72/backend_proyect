@@ -3,46 +3,47 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
     font-family: 'Nunito', sans-serif;
-    font-size: 22px;
     color: #fff;
 }
-
-.Home_color{
-    min-height: 100vh;
-    background: url('../src/component/images/fondo_principal.jpg');
-}
-
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    height: 57.8rem;
+    background-image: url(../src/assets/imgFondo.jpg);
+    background-size: cover;
+  }
+.content_login,.content_register{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
+  
 section {
     width: 100%;
     max-width: 420px;
     min-height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 5px yellow solid;
+    border-radius: 10%
 }
 
 form {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-grow: 1;
     padding-bottom: 1rem;
+    font-size: 25px;
 }
 
 a, a:visited {

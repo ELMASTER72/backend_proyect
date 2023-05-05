@@ -2,7 +2,7 @@ const User = require('../model/User');
 const bcrypt = require('bcrypt');
 
 const handleNewUser = async (req, res) => {
-    const { user, pwd } = req.body;
+    const { user,name,phone,email,pwd } = req.body;
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
 
     // comprueba si hay nombres de usuario duplicados en la base de datos
@@ -16,6 +16,9 @@ const handleNewUser = async (req, res) => {
         // Crear y almacenar el nuevo usuario
         const result = await User.create({
             "username": user,
+            "name": name, 
+            "phone": phone,
+            "email": email,
             "password": hashedPwd
         });
 

@@ -6,6 +6,18 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
+    phone:{
+        type: Number,
+        require: true
+    },
+    email:{
+        type: String,
+        require: true
+    },
     roles: {
         User: {
             type: Number,

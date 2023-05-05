@@ -15,6 +15,12 @@ const Register = () => {
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
+    const [name, setName] = useState('');
+
+    const [phone,setPhone] = useState(''); 
+
+    const [email,setEmail] = useState('');
+ 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
@@ -47,13 +53,14 @@ const Register = () => {
         e.preventDefault();
         const v1 = USER_REGEX.test(user);
         const v2 = PWD_REGEX.test(pwd);
+
         if (!v1 || !v2) {
             setErrMsg("Invalid Entry");
             return;
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ user,name,phone,email,pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -62,8 +69,12 @@ const Register = () => {
             console.log(JSON.stringify(response?.data));
             setSuccess(true);
             setUser('');
+            setName('');
+            setPhone('');
+            setEmail('');
             setPwd('');
             setMatchPwd('');
+            
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -115,6 +126,38 @@ const Register = () => {
                             Se permiten letras, números, guiones bajos y guiones.
                         </p>
 
+                        <label htmlFor="name">
+                           Nombre:
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
+                       <label htmlFor="phone">
+                            Telefono:
+                        </label>
+                        <input
+                            type="text"
+                            id="phone"
+                            onChange={(e) => setPhone(e.target.value)}
+                            value={phone}
+                        />
+
+                        <label htmlFor="emil">
+                           Email:
+                        </label>
+                        <input
+                            type="text"
+                            id="email"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
 
                         <label htmlFor="password">
                             Contraseña:

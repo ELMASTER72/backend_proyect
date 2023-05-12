@@ -10,3 +10,4 @@ export const Register_visual = () => {
     </div>
   )
 }
+export default Register_visual;

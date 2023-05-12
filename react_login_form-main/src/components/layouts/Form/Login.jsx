@@ -10,3 +10,4 @@ export const Login_visual = () => {
     </div>
   )
 }
+export default Login_visual;
